@@ -11,6 +11,22 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <%= link_to 'App Name', '/'%>
+        <% if user_signed_in? %>
+          <%= link_to 'What is App Name?', '/about' %>
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Register', new_user_registration_path %>
+          <%= link_to 'Log in', new_user_session_path %>
+          <%= link_to 'What is App Name?', '/about' %>
+        <% end %>
+      </nav>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
